@@ -41,8 +41,15 @@ def dot(octets):
         return '.'.join(octets)
 
 
+def dec(octet):
+    return str(int(octet, 2))
+
+
 if __name__ == '__main__':
     arg = sys.argv[1]
+    decimal = False
+    if len(sys.argv) > 2:
+        decimal = True
     ip = prefix = None
     if '/' in arg:
         ip, prefix = arg.split('/')
@@ -57,4 +64,7 @@ if __name__ == '__main__':
     if prefix:
         subnet_bits = bin_cidr(prefix)
         if subnet_bits:
-            print dot(subnet_bits)
+            if not decimal:
+                print dot(subnet_bits)
+            else:
+                print dot([dec(b) for b in subnet_bits])
