@@ -39,8 +39,6 @@ def get_octets(bits):
 def dot(octets):
     if octets:
         return '.'.join(octets)
-    else:
-        return ''
 
 
 if __name__ == '__main__':
@@ -54,7 +52,9 @@ if __name__ == '__main__':
         prefix = arg
     if ip:
         ip_bits = bin_ip(ip)
-        print dot(ip_bits)
+        if ip_bits:
+            print dot(ip_bits)
     if prefix:
         subnet_bits = bin_cidr(prefix)
-        print dot(subnet_bits)
+        if subnet_bits:
+            print dot(subnet_bits)
