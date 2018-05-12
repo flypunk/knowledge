@@ -16,7 +16,7 @@ def bin_ip(ip_addr):
 
 def bin_cidr(prefix):
     prefix = int(prefix)
-    if not (12 < prefix <= 32):
+    if not (0 <= prefix <= 32):
         print 'Invalid prefix', prefix
         return None
     else:
